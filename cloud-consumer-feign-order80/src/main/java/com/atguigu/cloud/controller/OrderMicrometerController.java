@@ -1,0 +1,32 @@
+package com.atguigu.cloud.controller;
+
+import com.atguigu.cloud.apis.PayFeignApi;
+import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * @BelongsProject: cloud2024
+ * @BelongsPackage: com.atguigu.cloud.controller
+ * @Author: Jerry
+ * @CreateTime: 2024-05-08  22:57
+ * @Description: TODO
+ * @Version: 1.0
+ */
+
+
+
+@RestController
+@Slf4j
+public class OrderMicrometerController {
+
+    @Resource
+    private PayFeignApi payFeignApi;
+
+    @GetMapping(value = "/feign/micrometer/{id}")
+    public String myMicrometer(@PathVariable("id") Integer id){
+        return payFeignApi.myMicrometer(id);
+    }
+}
